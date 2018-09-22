@@ -5,8 +5,14 @@ import sys
 from setuptools import setup
 
 import warcraftlogs
-from pip.download import PipSession
-from pip.req import parse_requirements
+try:
+    from pip._internal.download import PipSession
+except ImportError:
+    from pip.download import PipSession
+try:
+    from pip._internal.req import parse_requirements
+except ImportError:
+    from pip.req import parse_requirements
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
