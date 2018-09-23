@@ -10,9 +10,11 @@ class Encounter(metaclass=BaseMeta):
 
 
 class Bracket(metaclass=BaseMeta):
-    pk = ('id', 'name')
-    id = 'id'
-    name = 'name'
+    pk = ('type',)
+    type = 'type'
+    min = 'min'
+    max = 'max'
+    bucket = 'bucket'
 
 
 class Zone(metaclass=BaseMeta):
@@ -28,4 +30,7 @@ class Zone(metaclass=BaseMeta):
 
     @classmethod
     def _get_brackets_from_dict(cls, data, default=None):
-        return {b.id: b for b in [Bracket.from_dict(i) for i in data.get(cls.attributes['brackets'], [])]}
+        bracket = data.get(cls.attributes['brackets'],[])
+        if not isinstance(bracket, list):
+            bracket = [bracket]
+        return {b.type: b for b in [Bracket.from_dict(i) for i in bracket]}
