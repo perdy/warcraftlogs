@@ -3,13 +3,13 @@ from warcraftlogs.models.characters import Character
 
 
 class Fight(metaclass=BaseMeta):
-    pk = ('id', 'encounter', 'duration')
-    id = 'fightID'
-    encounter = 'encounter'
-    character = 'character'
-    duration = 'duration'
-    size = 'size'
-    total = 'total'
+    pk = ("id", "encounter", "duration")
+    id = "fightID"
+    encounter = "encounter"
+    character = "character"
+    duration = "duration"
+    size = "size"
+    total = "total"
 
     @classmethod
     def _get_character_from_dict(cls, data, default=None):
